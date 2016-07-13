@@ -39,6 +39,21 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
+
+/*  "/sampleget"
+ *    GET: sample get
+ */
+
+app.get("/sampleget", function(req, res) {
+  db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
+    if (err) {
+      handleError(res, err.message, "Failed to get sample.");
+    } else {
+      res.status(200).json(docs);  
+    }
+  });
+});
+
 /*  "/contacts"
  *    GET: finds all contacts
  *    POST: creates a new contact
