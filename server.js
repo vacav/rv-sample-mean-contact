@@ -43,15 +43,9 @@ function handleError(res, reason, message, code) {
 /*  "/sampleget"
  *    GET: sample get
  */
-
 app.get("/sampleget", function(req, res) {
-  db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
-    if (err) {
-      handleError(res, err.message, "Failed to get sample.");
-    } else {
-      res.status(200).json(docs);  
-    }
-  });
+	console.log("sampleget");
+    res.send('Page sampleget');
 });
 
 /*  "/contacts"
